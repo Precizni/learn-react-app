@@ -1,51 +1,40 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./context/LoginContext";
+
+import CharacterInfo from "./pages/CharacterInfo";
+import CharacterQuotes from "./pages/CharacterQuotes";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import TravelList from "./pages/TravelList";
+import PageLayout from "./components/PageLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import WebShop from "./pages/WebShop";
+import ActiveUser from "./components/ActiveUser";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [query, setQuery] = useState("character?race=Human");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const apiUrl = "https://the-one-api.dev/v2/";
-  const bearerToken = "NTYqimHirN8VdDdtqTo3";
-
-  console.log(data);
-  // console.log(query);
-
-  useEffect(
-    function () {
-      async function fetchData() {
-        try {
-          setIsLoading(true);
-          const res = await fetch(`${apiUrl}${query}`, {
-            method: "GET",
-            headers: { Authorization: `Bearer ${bearerToken}` },
-          });
-
-          if (!res.ok) throw new Error("There is a problem with fetching data");
-
-          const data = await res.json();
-          setData(data);
-          // .then((res) => res.json())
-          // .then((dat) => setPlayers(dat.data));
-        } catch (err) {
-          // console.error(err.message);
-          // setError(err.message);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-      fetchData();
-    },
-    [query]
-  );
-
   return (
-    <>
-      <div>NEW START</div>
-      {/* <div>{data.url}</div> */}
-      {/* <img className="about-page-img" src={data.url} alt="basketballs" /> */}
-    </>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<PageLayout />}>
+            <Route index element={<Home />} />
+            <Route path="character-info" element={<CharacterInfo />} />
+            <Route path="travel-list" element={<TravelList />} />
+            <Route path="character-quotes" element={<CharacterQuotes />} />
+            <Route
+              path="web-shop"
+              element={
+                <ProtectedRoute>
+                  <WebShop />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="active-user" element={<ActiveUser />} />
+            <Route path="login" element={<Login />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
