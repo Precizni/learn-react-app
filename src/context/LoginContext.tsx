@@ -1,6 +1,22 @@
 import { createContext, useContext, useState } from "react";
 
-const AuthContext = createContext();
+type ComplexObject = {
+  FAKE_USER: {
+    name: string;
+    email: string;
+    password: string;
+    avatar: string;
+  };
+  isAuthenticated: boolean;
+  login: (email: string, password: string) => void;
+  logout: () => void;
+};
+
+type Props = {
+  children?: React.ReactNode;
+};
+
+const AuthContext = createContext<ComplexObject | null>(null);
 
 const FAKE_USER = {
   name: "Petar",
@@ -9,10 +25,10 @@ const FAKE_USER = {
   avatar: "https://i.pravatar.cc/100?u=zz",
 };
 
-function AuthProvider({ children }) {
+function AuthProvider({ children }: Props) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  function login(email, password) {
+  function login(email: string, password: string) {
     if (email === FAKE_USER.email && password === FAKE_USER.password)
       setIsAuthenticated(true);
     return;
@@ -31,8 +47,7 @@ function AuthProvider({ children }) {
 
 function useAuth() {
   const context = useContext(AuthContext);
-  if (context === undefined)
-    throw new Error("AuthContext was used outside AuthProvider");
+  if (!context) throw new Error("AuthContext was used outside AuthProvider");
   return context;
 }
 
