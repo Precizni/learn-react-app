@@ -2,7 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/LoginContext";
 import { useEffect } from "react";
 
-function ProtectedRoute({ children }) {
+type Props = {
+  children?: React.ReactNode;
+};
+
+function ProtectedRoute({ children }: Props) {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/LoginContext";
 
 import CharacterInfo from "./pages/CharacterInfo";
@@ -10,6 +10,11 @@ import PageLayout from "./components/PageLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import WebShop from "./pages/WebShop";
 import ActiveUser from "./components/ActiveUser";
+import Books from "./components/Books";
+import Movies from "./components/Movies";
+import Characters from "./components/Characters";
+import SelectedBook from "./components/SelectedBook";
+import SelectedMovie from "./components/SelectedMovie";
 
 function App() {
   return (
@@ -18,7 +23,11 @@ function App() {
         <Routes>
           <Route element={<PageLayout />}>
             <Route index element={<Home />} />
-            <Route path="character-info" element={<CharacterInfo />} />
+            <Route path="character-info" element={<CharacterInfo />}>
+              <Route path="selected-book" element={<SelectedBook />} />
+              <Route path="selected-movie" element={<SelectedMovie />} />
+              {/* <Route path="selected-book" element={<SelectedBook />} /> */}
+            </Route>
             <Route path="travel-list" element={<TravelList />} />
             <Route path="character-quotes" element={<CharacterQuotes />} />
             <Route
