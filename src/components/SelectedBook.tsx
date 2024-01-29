@@ -9,7 +9,7 @@ function SelectedBook() {
 
   return (
     <div>
-      <h2>You selected {name}.</h2>
+      <h2>You selected book {name}.</h2>
       <button>
         <NavLink to="/character-info">X</NavLink>
       </button>

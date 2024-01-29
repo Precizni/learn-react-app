@@ -5,53 +5,35 @@ import BooksList from "./BooksList";
 import Movies from "./Movies";
 import Characters from "./Characters";
 import MoviesList from "./MoviesList";
+import Loader from "./Loader";
+import CharacterList from "./CharacterList";
+import { useFetch } from "../hooks/useFetch";
+import Loading from "./Loading";
 
 function FetchData() {
-  const [data, setData] = useState([]);
-  const [query, setQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [query, setQuery] = useState("character?name=/Gan/i");
+  const [book, setBook] = useState("character?name=/Gan/i");
+  const [movie, setMovie] = useState("character?name=/Gan/i");
 
-  const apiUrl = "https://the-one-api.dev/v2/";
-  const bearerToken = "NTYqimHirN8VdDdtqTo3";
+  const [data, isLoading, error] = useFetch(query);
+  // const [data, isLoading, error] = useFetch(book);
 
-  console.log(Object.values(data));
+  // console.log(Object.values(data));
+  // console.log(data?.filter((lik) => lik.gender === "Male"));
+  // const male = data?.filter((lik) => lik.gender === "Male");
+  // console.log(male);
+  // console.log(male?.filter((x) => x.name === "Bilbo Baggins"));
   // console.log(data.map((x) => x.hair));
   // console.log(query);
-
-  useEffect(
-    function () {
-      async function fetchData() {
-        try {
-          setIsLoading(true);
-          const res = await fetch(`${apiUrl}${query}`, {
-            method: "GET",
-            headers: { Authorization: `Bearer ${bearerToken}` },
-          });
-
-          if (!res.ok) throw new Error("There is a problem with fetching data");
-
-          const data = await res.json();
-          setData(data.docs);
-          // .then((res) => res.json())
-          // .then((dat) => setPlayers(dat.data));
-        } catch (err) {
-          // console.error(err.message);
-          // setError(err.message);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-      fetchData();
-    },
-    [query]
-  );
 
   return (
     <>
       <div>
+        {/* {isLoading && <Loader />} */}
         {query !== "book" ? (
           <Books onSetQuery={setQuery} />
+        ) : isLoading ? (
+          <Loading />
         ) : (
           <BooksList data={data} query={query} onSetQuery={setQuery} />
         )}
@@ -59,41 +41,21 @@ function FetchData() {
       <div>
         {query !== "movie" ? (
           <Movies onSetQuery={setQuery} />
+        ) : isLoading ? (
+          <Loading />
         ) : (
           <MoviesList data={data} query={query} onSetQuery={setQuery} />
         )}
       </div>
-
-      <Characters />
+      <div>
+        {query !== "character" ? (
+          <Characters onSetQuery={setQuery} />
+        ) : (
+          <CharacterList data={data} query={query} onSetQuery={setQuery} />
+        )}
+      </div>
     </>
   );
 }
-
-// function Book() {
-//   return (
-//     <div>
-//       Book
-//       <button>Select</button>
-//     </div>
-//   );
-// }
-
-// function Movie() {
-//   return (
-//     <div>
-//       Movie
-//       <button>Select</button>
-//     </div>
-//   );
-// }
-
-// function Character() {
-//   return (
-//     <div>
-//       Character
-//       <button>Select</button>
-//     </div>
-//   );
-// }
 
 export default FetchData;

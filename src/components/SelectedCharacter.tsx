@@ -1,6 +1,6 @@
 import { NavLink, useSearchParams } from "react-router-dom";
 
-function SelectedMovie() {
+function SelectedCharacter() {
   const [searchParams] = useSearchParams();
 
   const name = searchParams.get("name");
@@ -26,4 +26,4 @@ function SelectedMovie() {
   );
 }
 
-export default SelectedMovie;
+export default SelectedCharacter;
