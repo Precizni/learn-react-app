@@ -1,13 +1,16 @@
-function Characters({ onSetQuery }) {
+import { NavLink } from "react-router-dom";
+
+function Characters({ onSetOpen, onSetQuery }) {
   function handleClick() {
-    onSetQuery("character");
+    onSetOpen(false);
+    onSetQuery("");
   }
 
   return (
     <div>
       Find a character from LOTR
       <button type="button" onClick={handleClick}>
-        Select
+        <NavLink to="/character-info">Select</NavLink>
       </button>
     </div>
   );

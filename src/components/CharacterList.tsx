@@ -1,13 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useFetchCharacters } from "../hooks/useFetchCharacters";
+import { useState } from "react";
 
-function CharacterList({ data, query, onSetQuery }) {
+function CharacterList({ onSetOpen }) {
+  // const navigate = useNavigate();
+
   function handleClick() {
-    onSetQuery("");
+    onSetOpen(true);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
   }
+
+  const [query, setQuery] = useState("");
+  const [data, isLoading, error] = useFetchCharacters(query);
+
+  console.log(data);
+
   // console.log(data?.map((x) => x));
   return (
     <>
@@ -18,32 +28,30 @@ function CharacterList({ data, query, onSetQuery }) {
           className="search"
           type="text"
           placeholder="submit..."
-          value={query}
-          onChange={(e) => onSetQuery(e.target.value)}
+          // value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
       </form>
 
-      {/* <div>
+      <div>
         {query &&
-            data?.map((movie) => <ListItem movie={movie} key={movie._id} />)}
-        </div> */}
+          data?.map((characters) => (
+            <ListItem characters={characters} key={characters._id} />
+          ))}
+      </div>
       <button type="button" onClick={handleClick}>
-        X
+        <NavLink to="/character-info">X</NavLink>
       </button>
     </>
   );
 }
 
-function ListItem({ movie }) {
-  const { _id, name } = movie;
+function ListItem({ characters }) {
+  const { _id, name } = characters;
 
   return (
     <li>
-      <Link
-        to={`selected-movie?id=${_id}&name=${name}&nominations=${academyAwardNominations}&awards=${academyAwardWins}&boxOffice=${boxOfficeRevenueInMillions}&budget=${budgetInMillions}&score=${rottenTomatoesScore}`}
-      >
-        {name}
-      </Link>
+      <Link to={"selected-character"}>{name}</Link>
     </li>
   );
 }

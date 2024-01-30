@@ -15,6 +15,7 @@ import Movies from "./components/Movies";
 import Characters from "./components/Characters";
 import SelectedBook from "./components/SelectedBook";
 import SelectedMovie from "./components/SelectedMovie";
+import SelectedCharacter from "./components/SelectedCharacter";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
             <Route path="character-info" element={<CharacterInfo />}>
               <Route path="selected-book" element={<SelectedBook />} />
               <Route path="selected-movie" element={<SelectedMovie />} />
+              <Route
+                path="selected-character"
+                element={<SelectedCharacter />}
+              />
               {/* <Route path="selected-book" element={<SelectedBook />} /> */}
             </Route>
             <Route path="travel-list" element={<TravelList />} />

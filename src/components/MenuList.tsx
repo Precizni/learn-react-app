@@ -10,10 +10,11 @@ import CharacterList from "./CharacterList";
 import { useFetch } from "../hooks/useFetch";
 import Loading from "./Loading";
 
-function FetchData() {
+function MenuList() {
   const [query, setQuery] = useState("character?name=/Gan/i");
-  const [book, setBook] = useState("character?name=/Gan/i");
-  const [movie, setMovie] = useState("character?name=/Gan/i");
+  // const [book, setBook] = useState("character?name=/Gan/i");
+  // const [movie, setMovie] = useState("character?name=/Gan/i");
+  const [open, setOpen] = useState(true);
 
   const [data, isLoading, error] = useFetch(query);
   // const [data, isLoading, error] = useFetch(book);
@@ -29,9 +30,8 @@ function FetchData() {
   return (
     <>
       <div>
-        {/* {isLoading && <Loader />} */}
         {query !== "book" ? (
-          <Books onSetQuery={setQuery} />
+          <Books onSetQuery={setQuery} onSetOpen={setOpen} />
         ) : isLoading ? (
           <Loading />
         ) : (
@@ -40,7 +40,7 @@ function FetchData() {
       </div>
       <div>
         {query !== "movie" ? (
-          <Movies onSetQuery={setQuery} />
+          <Movies onSetQuery={setQuery} onSetOpen={setOpen} />
         ) : isLoading ? (
           <Loading />
         ) : (
@@ -48,14 +48,14 @@ function FetchData() {
         )}
       </div>
       <div>
-        {query !== "character" ? (
-          <Characters onSetQuery={setQuery} />
+        {open ? (
+          <Characters onSetOpen={setOpen} onSetQuery={setQuery} />
         ) : (
-          <CharacterList data={data} query={query} onSetQuery={setQuery} />
+          <CharacterList onSetOpen={setOpen} />
         )}
       </div>
     </>
   );
 }
 
-export default FetchData;
+export default MenuList;

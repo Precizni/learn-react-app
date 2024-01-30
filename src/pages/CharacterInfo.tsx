@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import FetchData from "../components/FetchData";
+import MenuList from "../components/MenuList";
 
 function CharacterInfo() {
   return (
     <>
-      <FetchData />
+      <MenuList />
       <Outlet />
     </>
   );
