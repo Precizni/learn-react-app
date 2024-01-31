@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useFetchCharacters } from "../hooks/useFetchCharacters";
 import { useState } from "react";
 
@@ -23,7 +23,7 @@ function CharacterList({ onSetOpen }) {
     <>
       <div>List of characters to select.</div>
       <form onSubmit={handleSubmit}>
-        <h1>Search characters 💍</h1>
+        <h1>Search characters 👑</h1>
         <input
           className="search"
           type="text"

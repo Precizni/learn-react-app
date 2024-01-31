@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/LoginContext";
 
 import CharacterInfo from "./pages/CharacterInfo";
@@ -10,9 +10,6 @@ import PageLayout from "./components/PageLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import WebShop from "./pages/WebShop";
 import ActiveUser from "./components/ActiveUser";
-import Books from "./components/Books";
-import Movies from "./components/Movies";
-import Characters from "./components/Characters";
 import SelectedBook from "./components/SelectedBook";
 import SelectedMovie from "./components/SelectedMovie";
 import SelectedCharacter from "./components/SelectedCharacter";

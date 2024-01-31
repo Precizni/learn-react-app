@@ -5,6 +5,8 @@ export function useFetchCharacters(query) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
+  console.log(query);
+
   // const apiUrl = "https://the-one-api.dev/v2/character?name=/Gan/i";
   const bearerToken = "NTYqimHirN8VdDdtqTo3";
 

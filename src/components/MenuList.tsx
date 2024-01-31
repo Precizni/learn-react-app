@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import Books from "./Books";
 import BooksList from "./BooksList";
 import Movies from "./Movies";
 import Characters from "./Characters";
 import MoviesList from "./MoviesList";
-import Loader from "./Loader";
 import CharacterList from "./CharacterList";
 import { useFetch } from "../hooks/useFetch";
 import Loading from "./Loading";
 
 function MenuList() {
-  const [query, setQuery] = useState("character?name=/Gan/i");
-  // const [book, setBook] = useState("character?name=/Gan/i");
-  // const [movie, setMovie] = useState("character?name=/Gan/i");
+  const [query, setQuery] = useState("");
   const [open, setOpen] = useState(true);
-
   const [data, isLoading, error] = useFetch(query);
   // const [data, isLoading, error] = useFetch(book);
 
