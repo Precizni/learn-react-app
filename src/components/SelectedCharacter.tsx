@@ -7,6 +7,8 @@ function SelectedCharacter() {
 
   const id = searchParams.get("id");
 
+  console.log(id);
+
   return (
     <div>
       {data
