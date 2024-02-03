@@ -1,31 +1,34 @@
-function SelectedCharacter() {
-  // const navigate = useNavigate();
+import { useSearchParams } from "react-router-dom";
+import { useCharacter } from "../context/CharacterContext";
 
-  return <h2>you selected this specific character</h2>;
+function SelectedCharacter() {
+  const { data } = useCharacter();
+  const [searchParams] = useSearchParams();
+
+  const id = searchParams.get("id");
+
+  return (
+    <div>
+      {data
+        ?.filter((select) => select._id.includes(id))
+        .map((display) => (
+          <div key={display._key}>
+            <h2>{display.name}</h2>
+            <p>Born: {display.birth}</p>
+            <p>Race: {display.race}</p>
+            <p>Gender: {display.gender}</p>
+            <p>Hair color: {display.hair}</p>
+            <p>Died: {display.death}</p>
+            <h3>
+              Link for more information:{" "}
+              <a href={display.wikiUrl} target="_blank">
+                LOTR wiki
+              </a>
+            </h3>
+          </div>
+        ))}
+    </div>
+  );
 }
 
 export default SelectedCharacter;
-
-// const [searchParams] = useSearchParams();
-
-// const name = searchParams.get("name");
-// const id = searchParams.get("id");
-// const nominations = searchParams.get("nominations");
-// const awards = searchParams.get("awards");
-// const boxOffice = searchParams.get("boxOffice");
-// const budget = searchParams.get("budget");
-// const score = searchParams.get("score");
-
-// return (
-//   <div>
-//     <h2>You selected movie {name}.</h2>
-//     <h3>Critics average score of {score}/100.</h3>
-//     <h3>Number of oscar nominations {nominations}.</h3>
-//     <h3>Oscars won {awards}.</h3>
-//     <h3>Movie's budget {budget} $ million.</h3>
-//     <h3>Box office earnings {boxOffice} $ million.</h3>
-//     <button>
-//       <NavLink to="/character-info">X</NavLink>
-//     </button>
-//   </div>
-// );

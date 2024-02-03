@@ -12,15 +12,6 @@ function MenuList() {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(true);
   const [data, isLoading, error] = useFetch(query);
-  // const [data, isLoading, error] = useFetch(book);
-
-  // console.log(Object.values(data));
-  // console.log(data?.filter((lik) => lik.gender === "Male"));
-  // const male = data?.filter((lik) => lik.gender === "Male");
-  // console.log(male);
-  // console.log(male?.filter((x) => x.name === "Bilbo Baggins"));
-  // console.log(data.map((x) => x.hair));
-  // console.log(query);
 
   return (
     <>

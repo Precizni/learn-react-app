@@ -1,24 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
-import { useFetchCharacters } from "../hooks/useFetchCharacters";
-import { useState } from "react";
+import { useCharacter } from "../context/CharacterContext";
 
 function CharacterList({ onSetOpen }) {
-  // const navigate = useNavigate();
+  const { query, setQuery, data, isLoading, error } = useCharacter();
 
   function handleClick() {
     onSetOpen(true);
+    setQuery("");
   }
 
   function handleSubmit(e) {
     e.preventDefault();
   }
 
-  const [query, setQuery] = useState("");
-  const [data, isLoading, error] = useFetchCharacters(query);
-
-  console.log(data);
-
-  // console.log(data?.map((x) => x));
   return (
     <>
       <div>List of characters to select.</div>
@@ -28,7 +22,7 @@ function CharacterList({ onSetOpen }) {
           className="search"
           type="text"
           placeholder="submit..."
-          // value={query}
+          value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </form>
@@ -51,7 +45,7 @@ function ListItem({ characters }) {
 
   return (
     <li>
-      <Link to={"selected-character"}>{name}</Link>
+      <Link to={`${name}?id=${_id}`}>{name}</Link>
     </li>
   );
 }

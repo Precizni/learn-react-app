@@ -13,38 +13,39 @@ import ActiveUser from "./components/ActiveUser";
 import SelectedBook from "./components/SelectedBook";
 import SelectedMovie from "./components/SelectedMovie";
 import SelectedCharacter from "./components/SelectedCharacter";
+import { CharacterProvider } from "./context/CharacterContext";
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<PageLayout />}>
-            <Route index element={<Home />} />
-            <Route path="character-info" element={<CharacterInfo />}>
-              <Route path="selected-book" element={<SelectedBook />} />
-              <Route path="selected-movie" element={<SelectedMovie />} />
+      <CharacterProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<PageLayout />}>
+              <Route index element={<Home />} />
+
+              <Route path="character-info" element={<CharacterInfo />}>
+                <Route path="selected-book" element={<SelectedBook />} />
+                <Route path="selected-movie" element={<SelectedMovie />} />
+                <Route path=":id" element={<SelectedCharacter />} />
+              </Route>
+
+              <Route path="travel-list" element={<TravelList />} />
+              <Route path="character-quotes" element={<CharacterQuotes />} />
               <Route
-                path="selected-character"
-                element={<SelectedCharacter />}
+                path="web-shop"
+                element={
+                  <ProtectedRoute>
+                    <WebShop />
+                  </ProtectedRoute>
+                }
               />
-              {/* <Route path="selected-book" element={<SelectedBook />} /> */}
+              <Route path="active-user" element={<ActiveUser />} />
+              <Route path="login" element={<Login />} />
             </Route>
-            <Route path="travel-list" element={<TravelList />} />
-            <Route path="character-quotes" element={<CharacterQuotes />} />
-            <Route
-              path="web-shop"
-              element={
-                <ProtectedRoute>
-                  <WebShop />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="active-user" element={<ActiveUser />} />
-            <Route path="login" element={<Login />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </CharacterProvider>
     </AuthProvider>
   );
 }
