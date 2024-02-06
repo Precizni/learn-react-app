@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "LOTR Movie trilogy",
+    "price": 60.99,
+    "imgUrl": "/imgs/lotr-movie.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Hobit Movie trilogy",
+    "price": 50.99,
+    "imgUrl": "/imgs/hobit-movie.jpg"
+  },
+  {
+    "id": 3,
+    "name": "LOTR Book trilogy",
+    "price": 45.99,
+    "imgUrl": "/imgs/lotr-book.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Hobit Book",
+    "price": 40.99,
+    "imgUrl": "/imgs/hobit-book.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Silmarillion Book",
+    "price": 42.99,
+    "imgUrl": "/imgs/silmarillion-book.jpg"
+  }
+]

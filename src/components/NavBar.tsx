@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import UserDisplay from "./UserDisplay";
+import { useCharacter } from "../context/CharacterContext";
 
 function NavBar() {
+  const { openCart, cartQuantity } = useCharacter();
+
   return (
     <>
       <UserDisplay />
@@ -26,6 +29,12 @@ function NavBar() {
           <NavLink to="/login">Login</NavLink>
         </li>
       </ul>
+      {cartQuantity > 0 && (
+        <button onClick={openCart}>
+          Shopping cart
+          <div>{cartQuantity}</div>
+        </button>
+      )}
       <h1>Header</h1>
     </>
   );
