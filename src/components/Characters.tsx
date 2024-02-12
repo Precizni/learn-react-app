@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function Characters({ onSetOpen, onSetQuery }) {
   function handleClick() {
-    onSetOpen(false);
+    onSetOpen(true);
     onSetQuery("");
   }
 

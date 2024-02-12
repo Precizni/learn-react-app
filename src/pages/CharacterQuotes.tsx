@@ -2,50 +2,50 @@ import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import SelectedQuote from "../components/SelectedQuote";
 
+// type CharacterQuotesProps = {
+
+// }
+
 function CharacterQuotes() {
   const [query, setQuery] = useState("");
-  const [number, setNumber] = useState(0);
-  const [data, isLoading, error] = useFetch(query);
+  const [data, isLoading, error, number, setNumber] = useFetch(query);
 
   const sam = "character/5cd99d4bde30eff6ebccfd0d/quote";
   const gandalf = "character/5cd99d4bde30eff6ebccfea0/quote";
   const boromir = "character/5cd99d4bde30eff6ebccfc57/quote";
   const gimli = "character/5cd99d4bde30eff6ebccfd23/quote";
   const galadriel = "character/5cd99d4bde30eff6ebccfd06/quote";
-  //
-  //
-  //
 
   function randomNumber() {
-    const num = Math.round(Math.random() * Number(data.length));
-    setNumber(num);
+    return Math.round(Math.random() * Number(data?.length));
   }
 
-  function myFunction(value, index, array) {
+  function myFunction(value, index) {
     return index === number;
   }
 
-  const quote = data.filter(myFunction);
+  const quote = data?.filter(myFunction).map((x) => x.dialog);
+  console.log(quote);
 
   function samClick() {
     setQuery(sam);
-    randomNumber();
+    setNumber(randomNumber());
   }
   function ganClick() {
     setQuery(gandalf);
-    randomNumber();
+    setNumber(randomNumber());
   }
   function borClick() {
     setQuery(boromir);
-    randomNumber();
+    setNumber(randomNumber());
   }
   function gimClick() {
     setQuery(gimli);
-    randomNumber();
+    setNumber(randomNumber());
   }
   function galClick() {
     setQuery(galadriel);
-    randomNumber();
+    setNumber(randomNumber());
   }
 
   return (
@@ -81,8 +81,12 @@ function CharacterQuotes() {
           Get a quote
         </button>
       </div>
-      <div></div>
-      <SelectedQuote quote={quote} query={query} isLoading={isLoading} />
+      <SelectedQuote
+        quote={quote}
+        query={query}
+        isLoading={isLoading}
+        error={error}
+      />
     </div>
   );
 }

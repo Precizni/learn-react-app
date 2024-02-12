@@ -1,7 +1,7 @@
+import ErrorMessage from "./ErrorMessage";
 import Loading from "./Loading";
 
-function SelectedQuote({ quote, query, isLoading }) {
-  console.log(quote);
+function SelectedQuote({ quote, query, isLoading, error }) {
   return (
     <>
       <div>
@@ -25,7 +25,15 @@ function SelectedQuote({ quote, query, isLoading }) {
           <h1>Galadriel</h1>
         )}
       </div>
-      <div>{isLoading ? <Loading /> : quote.map((x) => <p>{x.dialog}</p>)}</div>
+      <div>
+        {error ? (
+          <ErrorMessage message={error} />
+        ) : isLoading ? (
+          <Loading />
+        ) : (
+          <div>{quote}</div>
+        )}
+      </div>
     </>
   );
 }

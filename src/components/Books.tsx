@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function Books({ onSetQuery, onSetOpen }) {
   function handleClick() {
     onSetQuery("book");
-    onSetOpen(true);
+    onSetOpen(false);
   }
 
   return (

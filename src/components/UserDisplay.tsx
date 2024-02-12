@@ -5,8 +5,6 @@ function UserDisplay() {
   const { FAKE_USER, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  console.log(FAKE_USER);
-
   function handleClick() {
     logout();
     navigate("/");

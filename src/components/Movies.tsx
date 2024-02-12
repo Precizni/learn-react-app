@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function Movies({ onSetQuery, onSetOpen }) {
   function handleClick() {
     onSetQuery("movie");
-    onSetOpen(true);
+    onSetOpen(false);
   }
 
   return (

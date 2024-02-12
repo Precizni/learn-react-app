@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import UserDisplay from "./UserDisplay";
 import { useCharacter } from "../context/CharacterContext";
+import { useAuth } from "../context/LoginContext";
 
 function NavBar() {
+  const { isAuthenticated } = useAuth();
   const { openCart, cartQuantity } = useCharacter();
 
   return (
@@ -29,11 +31,13 @@ function NavBar() {
           <NavLink to="/login">Login</NavLink>
         </li>
       </ul>
-      {cartQuantity > 0 && (
-        <button onClick={openCart}>
-          Shopping cart
-          <div>{cartQuantity}</div>
-        </button>
+      {isAuthenticated && cartQuantity > 0 && (
+        <NavLink to="/web-shop">
+          <button onClick={openCart}>
+            Shopping cart
+            <div>{cartQuantity}</div>
+          </button>
+        </NavLink>
       )}
       <h1>Header</h1>
     </>

@@ -7,39 +7,39 @@ import MoviesList from "./MoviesList";
 import CharacterList from "./CharacterList";
 import { useFetch } from "../hooks/useFetch";
 import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 function MenuList() {
   const [query, setQuery] = useState("");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [data, isLoading, error] = useFetch(query);
 
   return (
     <>
       <div>
-        {query !== "book" ? (
-          <Books onSetQuery={setQuery} onSetOpen={setOpen} />
-        ) : isLoading ? (
-          <Loading />
-        ) : (
-          <BooksList data={data} query={query} onSetQuery={setQuery} />
-        )}
+        <Books onSetQuery={setQuery} onSetOpen={setOpen} />
+        <Movies onSetQuery={setQuery} onSetOpen={setOpen} />
+        <Characters onSetOpen={setOpen} onSetQuery={setQuery} />
       </div>
       <div>
-        {query !== "movie" ? (
-          <Movies onSetQuery={setQuery} onSetOpen={setOpen} />
-        ) : isLoading ? (
-          <Loading />
-        ) : (
-          <MoviesList data={data} query={query} onSetQuery={setQuery} />
-        )}
+        {query === "book" &&
+          (isLoading ? (
+            <Loading />
+          ) : (
+            <BooksList data={data} query={query} onSetQuery={setQuery} />
+          ))}
+        {error && <ErrorMessage message={error} />}
       </div>
       <div>
-        {open ? (
-          <Characters onSetOpen={setOpen} onSetQuery={setQuery} />
-        ) : (
-          <CharacterList onSetOpen={setOpen} />
-        )}
+        {query === "movie" &&
+          (isLoading ? (
+            <Loading />
+          ) : (
+            <MoviesList data={data} query={query} onSetQuery={setQuery} />
+          ))}
+        {error && <ErrorMessage message={error} />}
       </div>
+      <div>{open && <CharacterList onSetOpen={setOpen} />}</div>
     </>
   );
 }

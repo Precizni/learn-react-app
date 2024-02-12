@@ -1,11 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { useCharacter } from "../context/CharacterContext";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 function CharacterList({ onSetOpen }) {
   const { query, setQuery, data, isLoading, error } = useCharacter();
 
   function handleClick() {
-    onSetOpen(true);
+    onSetOpen(false);
     setQuery("");
   }
 
@@ -28,9 +30,14 @@ function CharacterList({ onSetOpen }) {
       </form>
 
       <div>
+        {error && <ErrorMessage message={error} />}
         {query &&
-          data?.map((characters) => (
-            <ListItem characters={characters} key={characters._id} />
+          (isLoading ? (
+            <Loading />
+          ) : (
+            data?.map((characters) => (
+              <ListItem characters={characters} key={characters._id} />
+            ))
           ))}
       </div>
       <button type="button" onClick={handleClick}>

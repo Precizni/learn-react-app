@@ -4,7 +4,7 @@ function BooksList({ data, query, onSetQuery }) {
   function handleClick() {
     onSetQuery("");
   }
-  // console.log(data?.map((x) => x));
+
   return (
     <>
       <div>List of books to select.</div>

@@ -21,7 +21,6 @@ type CharacterContext = {
   cartQuantity: number;
   cartItems: CartItem[];
   isOpen: boolean;
-
   query: string;
   // setQuery: () => void;
 };

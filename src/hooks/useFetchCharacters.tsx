@@ -5,9 +5,6 @@ export function useFetchCharacters(query) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  console.log(query);
-
-  // const apiUrl = "https://the-one-api.dev/v2/character?name=/Gan/i";
   const bearerToken = "NTYqimHirN8VdDdtqTo3";
 
   useEffect(
@@ -15,6 +12,8 @@ export function useFetchCharacters(query) {
       async function fetchData() {
         try {
           setIsLoading(true);
+          setError("");
+
           const res = await fetch(
             `https://the-one-api.dev/v2/character?name=/${query}/i`,
             {
@@ -27,20 +26,21 @@ export function useFetchCharacters(query) {
 
           const data = await res.json();
           setData(data.docs);
-          // .then((res) => res.json())
-          // .then((dat) => setPlayers(dat.data));
+          setError("");
         } catch (err) {
-          // console.error(err.message);
-          // setError(err.message);
+          console.error(err.message);
+          setError(err.message);
         } finally {
           setIsLoading(false);
         }
       }
+
       if (query.length < 2) {
         setData([]);
         setError("");
         return;
       }
+
       fetchData();
     },
     [query]

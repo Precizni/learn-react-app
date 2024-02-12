@@ -7,14 +7,12 @@ function SelectedCharacter() {
 
   const id = searchParams.get("id");
 
-  console.log(id);
-
   return (
     <div>
       {data
         ?.filter((select) => select._id.includes(id))
         .map((display) => (
-          <div key={display._key}>
+          <div key={display._id}>
             <h2>{display.name}</h2>
             <p>Born: {display.birth}</p>
             <p>Race: {display.race}</p>
