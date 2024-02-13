@@ -1,22 +1,32 @@
 import { useEffect, useState } from "react";
 
-export function useFetch(query) {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [number, setNumber] = useState();
+type FetchedData = {
+  academyAwardNominations: number;
+  academyAwardWins: number;
+  boxOfficeRevenueInMillions: number;
+  budgetInMillions: number;
+  name: string;
+  rottenTomatoesScore: number;
+  runtimeInMinutes: number;
+  _id: string;
+};
 
-  console.log(number);
+type FetchState<T> = {
+  data: T | null;
+  isLoading: boolean;
+  error: string;
+  number: number;
+  setNumber: React.Dispatch<React.SetStateAction<number>>;
+};
 
-  // function randomNumber() {
-  //   const num = Math.round(Math.random() * Number(data.length));
-  //   setNumber(num);
-  // }
+export function useFetch(query: string): FetchState<FetchedData[]> {
+  const [data, setData] = useState<FetchedData[] | null>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [number, setNumber] = useState<number>(0);
 
   const apiUrl = "https://the-one-api.dev/v2/";
   const bearerToken = "NTYqimHirN8VdDdtqTo3";
-
-  console.log(data);
 
   useEffect(
     function () {
@@ -38,8 +48,8 @@ export function useFetch(query) {
           setNumber(Math.round(Math.random() * Number(data.docs.length)));
           setError("");
         } catch (err) {
-          console.error(err.message);
-          setError(err.message);
+          console.error((err as Error)?.message);
+          setError((err as Error)?.message);
         } finally {
           setIsLoading(false);
         }
@@ -56,5 +66,5 @@ export function useFetch(query) {
     [query]
   );
 
-  return [data, isLoading, error, number, setNumber];
+  return { data, isLoading, error, number, setNumber };
 }

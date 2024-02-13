@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-function Books({ onSetQuery, onSetOpen }) {
+type BooksProps = {
+  onSetQuery: React.Dispatch<React.SetStateAction<string>>;
+  onSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function Books({ onSetQuery, onSetOpen }: BooksProps) {
   function handleClick() {
     onSetQuery("book");
     onSetOpen(false);

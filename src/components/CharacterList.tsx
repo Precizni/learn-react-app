@@ -3,7 +3,16 @@ import { useCharacter } from "../context/CharacterContext";
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
 
-function CharacterList({ onSetOpen }) {
+type CharacterListProps = {
+  onSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+type CharListProps = {
+  _id: string;
+  name: string;
+};
+
+function CharacterList({ onSetOpen }: CharacterListProps) {
   const { query, setQuery, data, isLoading, error } = useCharacter();
 
   function handleClick() {
@@ -11,7 +20,7 @@ function CharacterList({ onSetOpen }) {
     setQuery("");
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
 
@@ -47,7 +56,7 @@ function CharacterList({ onSetOpen }) {
   );
 }
 
-function ListItem({ characters }) {
+function ListItem({ characters }: { characters: CharListProps }) {
   const { _id, name } = characters;
 
   return (

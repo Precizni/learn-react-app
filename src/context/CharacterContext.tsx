@@ -2,6 +2,20 @@ import { ReactNode, createContext, useContext, useState } from "react";
 import { useFetchCharacters } from "../hooks/useFetchCharacters";
 import useLocalStorage from "../hooks/useLocalStorage";
 
+type Character = {
+  birth: string;
+  death: string;
+  gender: string;
+  hair: string;
+  height: string;
+  name: string;
+  race: string;
+  realm: string;
+  spouse: string;
+  wikiUrl: string;
+  _id: string;
+};
+
 type CharacterProviderProps = {
   children: ReactNode;
 };
@@ -22,14 +36,19 @@ type CharacterContext = {
   cartItems: CartItem[];
   isOpen: boolean;
   query: string;
-  // setQuery: () => void;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  data: Character[] | null;
+  isLoading: boolean;
+  error: string;
 };
 
 const CharacterContext = createContext({} as CharacterContext);
 
 function CharacterProvider({ children }: CharacterProviderProps) {
   const [query, setQuery] = useState("");
-  const [data, isLoading, error] = useFetchCharacters(query);
+  const { data, isLoading, error } = useFetchCharacters(query);
+
+  console.log(data);
 
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(

@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-function Characters({ onSetOpen, onSetQuery }) {
+type CharactersProps = {
+  onSetQuery: React.Dispatch<React.SetStateAction<string>>;
+  onSetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function Characters({ onSetOpen, onSetQuery }: CharactersProps) {
   function handleClick() {
     onSetOpen(true);
     onSetQuery("");

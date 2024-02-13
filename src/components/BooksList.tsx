@@ -1,6 +1,24 @@
 import { Link } from "react-router-dom";
 
-function BooksList({ data, query, onSetQuery }) {
+type FetchedData = {
+  academyAwardNominations: number;
+  academyAwardWins: number;
+  boxOfficeRevenueInMillions: number;
+  budgetInMillions: number;
+  name: string;
+  rottenTomatoesScore: number;
+  runtimeInMinutes: number;
+  _id: string;
+};
+
+type BooksListProps = {
+  // data: { name: string; _id: string }[];
+  data: FetchedData[] | null;
+  query: string;
+  onSetQuery: React.Dispatch<React.SetStateAction<string>>;
+};
+
+function BooksList({ data, query, onSetQuery }: BooksListProps) {
   function handleClick() {
     onSetQuery("");
   }
@@ -13,19 +31,15 @@ function BooksList({ data, query, onSetQuery }) {
       </button>
       <div>
         {query &&
-          data?.map((books) => <ListItem books={books} key={books._id} />)}
+          data?.map((books) => (
+            <li key={books._id}>
+              <Link to={`selected-book?id=${books._id}&name=${books.name}`}>
+                {books.name}
+              </Link>
+            </li>
+          ))}
       </div>
     </>
-  );
-}
-
-function ListItem({ books }) {
-  const { _id, name } = books;
-
-  return (
-    <li>
-      <Link to={`selected-book?id=${_id}&name=${name}`}>{name}</Link>
-    </li>
   );
 }
 

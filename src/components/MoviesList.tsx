@@ -1,10 +1,39 @@
 import { Link } from "react-router-dom";
 
-function MoviesList({ data, query, onSetQuery }) {
+type FetchedData = {
+  academyAwardNominations: number;
+  academyAwardWins: number;
+  boxOfficeRevenueInMillions: number;
+  budgetInMillions: number;
+  name: string;
+  rottenTomatoesScore: number;
+  runtimeInMinutes: number;
+  _id: string;
+};
+
+type MoviesListProps = {
+  data: FetchedData[] | null;
+  query: string;
+  onSetQuery: React.Dispatch<React.SetStateAction<string>>;
+};
+
+type MovieProps = {
+  movie: {
+    name: string;
+    _id: string;
+    academyAwardNominations: number;
+    academyAwardWins: number;
+    boxOfficeRevenueInMillions: number;
+    budgetInMillions: number;
+    rottenTomatoesScore: number;
+    runtimeInMinutes: number;
+  };
+};
+
+function MoviesList({ data, query, onSetQuery }: MoviesListProps) {
   function handleClick() {
     onSetQuery("");
   }
-  // console.log(data?.map((x) => x));
   return (
     <>
       <div>List of movies to select.</div>
@@ -19,7 +48,7 @@ function MoviesList({ data, query, onSetQuery }) {
   );
 }
 
-function ListItem({ movie }) {
+function ListItem({ movie }: MovieProps) {
   const {
     _id,
     name,

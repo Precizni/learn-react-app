@@ -12,7 +12,7 @@ import ErrorMessage from "./ErrorMessage";
 function MenuList() {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
-  const [data, isLoading, error] = useFetch(query);
+  const { data, isLoading, error } = useFetch(query);
 
   return (
     <>

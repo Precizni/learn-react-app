@@ -12,7 +12,7 @@ function SelectedMovie() {
   const score = searchParams.get("score");
 
   return (
-    <div>
+    <div key={id}>
       <h2>You selected movie {name}.</h2>
       <h3>Critics average score of {score}/100.</h3>
       <h3>Number of oscar nominations {nominations}.</h3>

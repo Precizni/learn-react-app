@@ -10,7 +10,7 @@ function SelectedCharacter() {
   return (
     <div>
       {data
-        ?.filter((select) => select._id.includes(id))
+        ?.filter((select) => select._id.includes(id || ""))
         .map((display) => (
           <div key={display._id}>
             <h2>{display.name}</h2>
