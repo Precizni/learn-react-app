@@ -1,7 +1,15 @@
 import ErrorMessage from "./ErrorMessage";
 import Loading from "./Loading";
 
-function SelectedQuote({ quote, query, isLoading, error }) {
+type SelectedQuoteProps = {
+  quote: string[] | undefined;
+  query: string;
+  isLoading: boolean;
+  error: string;
+};
+
+function SelectedQuote({ quote, query, isLoading, error }: SelectedQuoteProps) {
+  console.log(quote, query, isLoading, error);
   return (
     <>
       <div>

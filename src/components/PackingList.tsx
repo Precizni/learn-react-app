@@ -1,10 +1,35 @@
 import { useState } from "react";
 import Item from "./Item";
 
-function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
+type PackingListProps = {
+  items: {
+    id: number;
+    packed: boolean;
+    description: string;
+    quantity: number;
+  }[];
+  onDeleteItem: (id: number) => void;
+  onToggleItem: (id: number) => void;
+  onClearList: () => void;
+};
+
+function PackingList({
+  items,
+  onDeleteItem,
+  onToggleItem,
+  onClearList,
+}: PackingListProps) {
   const [sortBy, setSortBy] = useState("input");
 
-  let sortedItems;
+  console.log(sortBy);
+  console.log(items);
+
+  let sortedItems: {
+    id: number;
+    packed: boolean;
+    description: string;
+    quantity: number;
+  }[] = [];
 
   if (sortBy === "input") sortedItems = items;
 

@@ -9,6 +9,10 @@ type FetchedData = {
   rottenTomatoesScore: number;
   runtimeInMinutes: number;
   _id: string;
+  character: string;
+  dialog: string;
+  id: string;
+  movie: string;
 };
 
 type FetchState<T> = {

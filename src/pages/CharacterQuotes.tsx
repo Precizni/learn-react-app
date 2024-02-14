@@ -2,13 +2,9 @@ import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import SelectedQuote from "../components/SelectedQuote";
 
-// type CharacterQuotesProps = {
-
-// }
-
 function CharacterQuotes() {
   const [query, setQuery] = useState("");
-  const [data, isLoading, error, number, setNumber] = useFetch(query);
+  const { data, isLoading, error, number, setNumber } = useFetch(query);
 
   const sam = "character/5cd99d4bde30eff6ebccfd0d/quote";
   const gandalf = "character/5cd99d4bde30eff6ebccfea0/quote";
@@ -20,12 +16,7 @@ function CharacterQuotes() {
     return Math.round(Math.random() * Number(data?.length));
   }
 
-  function myFunction(value, index) {
-    return index === number;
-  }
-
-  const quote = data?.filter(myFunction).map((x) => x.dialog);
-  console.log(quote);
+  const quote = data?.filter((x, y) => y === number).map((a) => a.dialog);
 
   function samClick() {
     setQuery(sam);

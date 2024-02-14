@@ -2,7 +2,6 @@ import ShoppingCart from "../components/ShoppingCart";
 import StoreItem from "../components/StoreItem";
 import storeItems from "../data/items.json";
 
-// moving properties this way? <StoreItem {...item} />
 function WebShop() {
   return (
     <>

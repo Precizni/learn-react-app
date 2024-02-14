@@ -4,18 +4,27 @@ import Form from "../components/Form";
 import PackingList from "../components/PackingList";
 import Stats from "../components/Stats";
 
-function TravelList() {
-  const [items, setItems] = useState([]);
+type ItemProps = {
+  description: string;
+  quantity: number;
+  packed: boolean;
+  id: number;
+};
 
-  function handleAddItems(item) {
+function TravelList() {
+  const [items, setItems] = useState<ItemProps[]>([]);
+
+  console.log(items);
+
+  function handleAddItems(item: ItemProps) {
     setItems((items) => [...items, item]);
   }
 
-  function handleDeleteItem(id) {
+  function handleDeleteItem(id: number) {
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
-  function handleToggleItem(id) {
+  function handleToggleItem(id: number) {
     setItems((items) =>
       items.map((item) =>
         item.id === id ? { ...item, packed: !item.packed } : item

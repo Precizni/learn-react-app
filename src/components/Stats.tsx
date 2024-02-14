@@ -1,4 +1,14 @@
-function Stats({ items }) {
+type StatsProps = {
+  items: {
+    id: number;
+    packed: boolean;
+    description: string;
+    quantity: number;
+  }[];
+};
+
+function Stats({ items }: StatsProps) {
+  console.log(items);
   if (!items.length)
     return (
       <p className="stats">
