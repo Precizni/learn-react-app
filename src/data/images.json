@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1001,
+    "name": "Search",
+    "imgUrl": "/imgs/search-lotr.jpg"
+  },
+  {
+    "id": 1002,
+    "name": "List",
+    "imgUrl": "/imgs/list-lotr.jpg"
+  },
+  {
+    "id": 1003,
+    "name": "Quotes",
+    "imgUrl": "/imgs/quotes-lotr.jpg"
+  },
+  {
+    "id": 1004,
+    "name": "Shop",
+    "imgUrl": "/imgs/shop-lotr.jpg"
+  }
+]

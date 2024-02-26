@@ -1,11 +1,9 @@
-import { useCharacter } from "../context/CharacterContext";
-import CartItem from "./CartItem";
-import storeItems from "../data/items.json";
+import { useCharacter } from '../context/CharacterContext';
+import CartItem from './CartItem';
+import storeItems from '../data/items.json';
 
 function ShoppingCart() {
   const { isOpen, closeCart, cartItems } = useCharacter();
-
-  console.log(cartItems.length);
 
   return (
     isOpen && (
@@ -19,7 +17,7 @@ function ShoppingCart() {
           ))}
         </div>
         <h3>
-          Total{" "}
+          Total{' '}
           {cartItems.reduce((total, cartItem) => {
             const item = storeItems.find((i) => i.id === cartItem.id);
             return total + (item?.price || 0) * cartItem.quantity;
