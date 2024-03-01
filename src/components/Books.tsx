@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 type BooksProps = {
   onSetQuery: React.Dispatch<React.SetStateAction<string>>;
@@ -7,17 +7,18 @@ type BooksProps = {
 
 function Books({ onSetQuery, onSetOpen }: BooksProps) {
   function handleClick() {
-    onSetQuery("book");
+    onSetQuery('book');
     onSetOpen(false);
   }
 
   return (
-    <div>
-      Books
-      <button type="button" onClick={handleClick}>
-        <NavLink to="/character-info">Select</NavLink>
-      </button>
-    </div>
+    <NavLink
+      to="/character-info"
+      className="my-3 rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300"
+      onClick={handleClick}
+    >
+      <div className="text-lg">Books</div>
+    </NavLink>
   );
 }
 

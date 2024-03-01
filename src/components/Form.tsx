@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 type FormProps = {
   onAddItems: (item: {
@@ -10,7 +10,7 @@ type FormProps = {
 };
 
 function Form({ onAddItems }: FormProps) {
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
 
   console.log(description, quantity);
@@ -24,16 +24,17 @@ function Form({ onAddItems }: FormProps) {
 
     onAddItems(newItem);
 
-    setDescription("");
+    setDescription('');
     setQuantity(1);
   }
 
   return (
-    <form className="add-form" onSubmit={handleSubmit}>
-      <h3>What do you need for the trip?</h3>
+    <form onSubmit={handleSubmit}>
+      <h3 className="mb-2 text-xl">What do you need for the trip?</h3>
       <select
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}
+        className="rounded-md border-2 p-1 shadow-md focus:outline-stone-500"
       >
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
           <option value={num} key={num}>
@@ -46,8 +47,9 @@ function Form({ onAddItems }: FormProps) {
         placeholder="Item..."
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        className="rounded-md border-2 p-1 shadow-md focus:outline-stone-500"
       />
-      <button>Add</button>
+      <button className="ml-2 rounded-md border-2 p-1">Add</button>
     </form>
   );
 }

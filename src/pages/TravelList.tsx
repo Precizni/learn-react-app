@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import Form from "../components/Form";
-import PackingList from "../components/PackingList";
-import Stats from "../components/Stats";
+import Form from '../components/Form';
+import PackingList from '../components/PackingList';
+import Stats from '../components/Stats';
 
 type ItemProps = {
   description: string;
@@ -27,22 +27,22 @@ function TravelList() {
   function handleToggleItem(id: number) {
     setItems((items) =>
       items.map((item) =>
-        item.id === id ? { ...item, packed: !item.packed } : item
-      )
+        item.id === id ? { ...item, packed: !item.packed } : item,
+      ),
     );
   }
 
   function handleClearList() {
     const confirmed = window.confirm(
-      "Are you sure you want to delete all items?"
+      'Are you sure you want to delete all items?',
     );
 
     if (confirmed) setItems([]);
   }
 
   return (
-    <div className="app">
-      <h1>🏕️ Middle-Earth trip 🌋</h1>
+    <div className="mt-10 flex flex-col items-center">
+      <h1 className="mb-3 text-3xl"> Middle-Earth trip 🏕️ 🌋</h1>
       <Form onAddItems={handleAddItems} />
       <PackingList
         items={items}

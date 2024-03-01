@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 type CharactersProps = {
   onSetQuery: React.Dispatch<React.SetStateAction<string>>;
@@ -8,16 +8,17 @@ type CharactersProps = {
 function Characters({ onSetOpen, onSetQuery }: CharactersProps) {
   function handleClick() {
     onSetOpen(true);
-    onSetQuery("");
+    onSetQuery('');
   }
 
   return (
-    <div>
-      Find a character from LOTR
-      <button type="button" onClick={handleClick}>
-        <NavLink to="/character-info">Select</NavLink>
-      </button>
-    </div>
+    <NavLink
+      to="/character-info"
+      onClick={handleClick}
+      className="my-3 rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300"
+    >
+      <div className="text-lg">Characters</div>
+    </NavLink>
   );
 }
 

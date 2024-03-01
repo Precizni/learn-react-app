@@ -13,7 +13,7 @@ function NavBar() {
   return (
     <div className="mt-4 px-4">
       <div className="flex justify-between">
-        <NavLink to="/" className="rounded-lg hover:bg-amber-400">
+        <NavLink to="/" className="rounded-lg hover:bg-amber-300">
           <img
             src={HomeIcon}
             alt="homeIcon"
@@ -21,7 +21,7 @@ function NavBar() {
           />
         </NavLink>
 
-        <NavLink to="/login" className="rounded-lg hover:bg-amber-400">
+        <NavLink to="/login" className="rounded-lg hover:bg-amber-300">
           <img
             src={LoginIcon}
             alt="loginIcon"
@@ -31,20 +31,20 @@ function NavBar() {
       </div>
 
       <div className="flex justify-between">
-        <NavLink to="/character-info" className="rounded-lg hover:bg-amber-400">
+        <NavLink to="/character-info" className="rounded-lg hover:bg-amber-300">
           <div className="m-2 inline-block">Search</div>
         </NavLink>
-        <NavLink to="/travel-list" className="rounded-lg hover:bg-amber-400">
+        <NavLink to="/travel-list" className="rounded-lg hover:bg-amber-300">
           <div className="m-2 inline-block">List</div>
         </NavLink>
         <NavLink
           to="/character-quotes"
-          className="rounded-lg hover:bg-amber-400"
+          className="rounded-lg hover:bg-amber-300"
         >
           <div className="m-2 inline-block">Quotes</div>
         </NavLink>
 
-        <NavLink to="/web-shop" className="rounded-lg hover:bg-amber-400">
+        <NavLink to="/web-shop" className="rounded-lg hover:bg-amber-300">
           <div className="m-2 inline-block">Shop</div>
         </NavLink>
       </div>

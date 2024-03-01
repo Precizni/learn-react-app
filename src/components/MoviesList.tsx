@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 type FetchedData = {
   academyAwardNominations: number;
@@ -32,19 +32,19 @@ type MovieProps = {
 
 function MoviesList({ data, query, onSetQuery }: MoviesListProps) {
   function handleClick() {
-    onSetQuery("");
+    onSetQuery('');
   }
   return (
-    <>
-      <div>List of movies to select.</div>
-      <button type="button" onClick={handleClick}>
+    <div className="my-10 text-center">
+      <div className="pb-3 text-xl">List of movies to select</div>
+      {/* <button type="button" onClick={handleClick}>
         X
-      </button>
-      <div>
+      </button> */}
+      <div className="text-left underline underline-offset-1">
         {query &&
           data?.map((movie) => <ListItem movie={movie} key={movie._id} />)}
       </div>
-    </>
+    </div>
   );
 }
 
