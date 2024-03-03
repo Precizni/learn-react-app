@@ -7,23 +7,36 @@ function ShoppingCart() {
 
   return (
     isOpen && (
-      <>
-        <span>CHART is open </span>
-        <button onClick={closeCart}>X</button>
-        {cartItems.length === 0 && <div>add items to cart</div>}
-        <div>
-          {cartItems.map((item) => (
-            <CartItem key={item.id} {...item} />
-          ))}
+      <div className="bg-slate-100 p-5 shadow-xl">
+        <div className="mb-10 flex flex-row justify-between">
+          <h1 className="text-center text-2xl font-bold">Shopping Cart</h1>
+          <button
+            onClick={closeCart}
+            className="rounded-full border-2 border-stone-500 px-2 hover:opacity-50"
+          >
+            Close
+          </button>
         </div>
-        <h3>
+
+        <div>
+          {cartItems.length === 0 && <div>add items to cart</div>}
+          <div className="flex flex-wrap justify-center ">
+            {cartItems.map((item) => (
+              <CartItem key={item.id} {...item} />
+            ))}
+          </div>
+        </div>
+        <h3 className="mt-7 text-center text-xl font-bold">
           Total{' '}
-          {cartItems.reduce((total, cartItem) => {
-            const item = storeItems.find((i) => i.id === cartItem.id);
-            return total + (item?.price || 0) * cartItem.quantity;
-          }, 0)}
+          {Math.round(
+            cartItems.reduce((total, cartItem) => {
+              const item = storeItems.find((i) => i.id === cartItem.id);
+              return total + (item?.price || 0) * cartItem.quantity;
+            }, 0) * 100,
+          ) / 100}{' '}
+          €
         </h3>
-      </>
+      </div>
     )
   );
 }

@@ -1,5 +1,5 @@
-import { useCharacter } from "../context/CharacterContext";
-import storeItems from "../data/items.json";
+import { useCharacter } from '../context/CharacterContext';
+import storeItems from '../data/items.json';
 
 type CartItemProps = {
   id: number;
@@ -12,16 +12,24 @@ function CartItem({ id, quantity }: CartItemProps) {
   if (item == null) return null;
 
   return (
-    <div>
-      <img src={item.imgUrl} alt={item.name} height={"120px"} />
+    <div className="m-5">
+      <img
+        src={item.imgUrl}
+        alt={item.name}
+        className="mb-1 size-20 rounded-lg border-4 border-red-700 object-cover"
+      />
       <div>
-        <div>
-          {item.name}
-          {quantity > 1 && <span> x{quantity}</span>}
+        <div className="text-sm">{item.name}</div>
+        <div className="text-sm">
+          {`${item.price} €`} {quantity > 1 && <span> x{quantity}</span>}
         </div>
-        <div>{`${item.price} €`}</div>
-        <div>{`total price ${item.price * quantity} €`}</div>
-        <button onClick={() => removeFromCart(item.id)}>remove</button>
+        <div className="text-sm font-bold">{`${item.price * quantity} €`}</div>
+        <button
+          className="mt-2 rounded-full border-2 border-stone-500 px-2 hover:opacity-50"
+          onClick={() => removeFromCart(item.id)}
+        >
+          remove
+        </button>
       </div>
     </div>
   );

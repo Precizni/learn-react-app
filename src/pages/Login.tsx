@@ -1,10 +1,10 @@
-import { FormEvent, useEffect, useState } from "react";
-import { useAuth } from "../context/LoginContext";
-import { useNavigate } from "react-router-dom";
+import { FormEvent, useEffect, useState } from 'react';
+import { useAuth } from '../context/LoginContext';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [email, setEmail] = useState("petar@gmail.com");
-  const [password, setPassword] = useState("1234");
+  const [email, setEmail] = useState('petar@gmail.com');
+  const [password, setPassword] = useState('1234');
 
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -17,41 +17,53 @@ function Login() {
 
   useEffect(
     function () {
-      if (isAuthenticated) navigate("/active-user", { replace: true });
+      if (isAuthenticated) navigate('/active-user', { replace: true });
     },
-    [isAuthenticated, navigate]
+    [isAuthenticated, navigate],
   );
 
   return (
-    <>
-      <div>Login page</div>
-      <p>To enter web shop you need to login</p>
-      <form onSubmit={handleSubmit}>
+    <div className="flex flex-col items-center">
+      <h2 className="mb-12 mt-10 text-4xl font-bold">Login and enter</h2>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="email">Email address</label>
-          <input
-            type="email"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
+          <label htmlFor="email" className="p-1 text-sm">
+            Email address
+          </label>
+          <div className="mt-2">
+            <input
+              type="email"
+              id="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              className="w-80 rounded-md border-2 p-1 shadow-md focus:outline-stone-500"
+            />
+          </div>
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
+          <label htmlFor="password" className="p-1 text-sm">
+            Password
+          </label>
+          <div className="mt-2">
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              className="w-80 rounded-md border-2 p-1 shadow-md focus:outline-stone-500"
+            />
+          </div>
         </div>
 
         <div>
-          <button>Login</button>
+          <button className="flex w-full justify-center rounded-md bg-stone-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-300">
+            Submit
+          </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

@@ -42,7 +42,7 @@ function TravelList() {
 
   return (
     <div className="mt-10 flex flex-col items-center">
-      <h1 className="mb-3 text-4xl font-bold"> Middle-Earth trip 🏕️ 🌋</h1>
+      <h1 className="mb-3 text-4xl font-bold"> Middle-Earth 🏕️ 🌋</h1>
       <Form onAddItems={handleAddItems} />
       <PackingList
         items={items}

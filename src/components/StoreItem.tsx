@@ -1,4 +1,4 @@
-import { useCharacter } from "../context/CharacterContext";
+import { useCharacter } from '../context/CharacterContext';
 
 type StoreItemProps = {
   id: number;
@@ -18,27 +18,47 @@ function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
   const quantity = getItemQuantity(id);
 
   return (
-    <div>
-      <img src={imgUrl} alt={name} height={"200px"} />
-      <div>
+    <div className="m-10">
+      <img
+        src={imgUrl}
+        alt={name}
+        className="size-48 rounded-lg border-4 border-double border-amber-300 object-cover"
+      />
+      <div className="mt-2">
         <span>{name}</span>
-        <span>{`  ${price} €`}</span>
+        <span className="font-bold">{`  ${price} €`}</span>
       </div>
-      <div>
+      <div className="mt-1">
         {quantity === 0 ? (
-          <button onClick={() => increaseCartQuantity(id)}>
-            + Add to Cart
+          <button
+            className="rounded-full border-2 border-stone-500 px-2 hover:opacity-50"
+            onClick={() => increaseCartQuantity(id)}
+          >
+            + Add to cart
           </button>
         ) : (
           <div>
             <div>
-              <button onClick={() => decreaseCartQuantity(id)}>-</button>
-              <div>
-                <span>{quantity}</span> in cart
-              </div>
-              <button onClick={() => increaseCartQuantity(id)}>+</button>
+              <button
+                onClick={() => decreaseCartQuantity(id)}
+                className="rounded-full border-2 border-stone-500 px-2 hover:opacity-50"
+              >
+                -
+              </button>
+              <span className="mx-2 font-bold">{quantity}</span>
+              <button
+                onClick={() => increaseCartQuantity(id)}
+                className="rounded-full border-2 border-stone-500 px-2 hover:opacity-50"
+              >
+                +
+              </button>
+              <button
+                onClick={() => removeFromCart(id)}
+                className="ml-2 rounded-full border-2 border-stone-500 px-2 hover:opacity-50"
+              >
+                Remove
+              </button>
             </div>
-            <button onClick={() => removeFromCart(id)}>Remove</button>
           </div>
         )}
       </div>

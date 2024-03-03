@@ -1,13 +1,15 @@
-import ShoppingCart from "../components/ShoppingCart";
-import StoreItem from "../components/StoreItem";
-import storeItems from "../data/items.json";
+import ShoppingCart from '../components/ShoppingCart';
+import StoreItem from '../components/StoreItem';
+import storeItems from '../data/items.json';
+
+//space-x-10 space-y-10
 
 function WebShop() {
   return (
     <>
       <ShoppingCart />
-      <h2>Web shop</h2>
-      <div>
+
+      <div className="mb-20 flex flex-wrap justify-center">
         {storeItems.map((item) => (
           <div key={item.id}>
             <StoreItem {...item} />
