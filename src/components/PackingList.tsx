@@ -44,8 +44,8 @@ function PackingList({
       .sort((a, b) => Number(a.packed) - Number(b.packed));
 
   return (
-    <div className="my-10">
-      <ul className="flex h-60 w-80 flex-wrap overflow-auto">
+    <div className="mt-10">
+      <ul className="flex h-60 w-80 flex-wrap overflow-scroll rounded-lg bg-slate-100 drop-shadow-md">
         {sortedItems.map((item) => (
           <Item
             item={item}
@@ -56,13 +56,19 @@ function PackingList({
         ))}
       </ul>
 
-      <div className="">
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+      <div className="my-10 flex flex-col items-center">
+        <select
+          className="rounded-md border-2 p-1 shadow-md focus:outline-stone-500"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
           <option value="input">Sort by input order</option>
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
-        <button onClick={onClearList}>Clear list</button>
+        <button className="mt-2 rounded-md border-2 p-1" onClick={onClearList}>
+          Clear list
+        </button>
       </div>
     </div>
   );

@@ -4,8 +4,6 @@ import QuotesImg from '/imgs/quotes-lotr.jpg';
 import ShopImg from '/imgs/shop-lotr.jpg';
 import { NavLink } from 'react-router-dom';
 
-//  bg-slate-800/50 p-2
-
 function Home() {
   return (
     <div className="flex flex-wrap justify-center">

@@ -49,7 +49,7 @@ function Form({ onAddItems }: FormProps) {
         onChange={(e) => setDescription(e.target.value)}
         className="rounded-md border-2 p-1 shadow-md focus:outline-stone-500"
       />
-      <button className="ml-2 rounded-md border-2 p-1">Add</button>
+      <button className="rounded-md border-2 p-1">Add</button>
     </form>
   );
 }

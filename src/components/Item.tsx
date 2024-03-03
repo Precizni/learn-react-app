@@ -12,8 +12,9 @@ type ItemProps = {
 function Item({ item, onDeleteItem, onToggleItem }: ItemProps) {
   console.log(item);
   return (
-    <li className="p-1">
+    <li className="p-3">
       <input
+        className="mr-2"
         type="checkbox"
         value={String(item.packed)}
         onChange={() => onToggleItem(item.id)}
@@ -21,7 +22,9 @@ function Item({ item, onDeleteItem, onToggleItem }: ItemProps) {
       <span style={item.packed ? { textDecoration: 'line-through' } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button onClick={() => onDeleteItem(item.id)}>❌</button>
+      <button className="ml-1" onClick={() => onDeleteItem(item.id)}>
+        ❌
+      </button>
     </li>
   );
 }
