@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 function Home() {
   return (
-    <div className="flex flex-wrap justify-center">
+    <div className="my-16 flex flex-wrap justify-center xl:w-3/6 xl:self-center">
       <div className="relative m-5">
         <NavLink to="/character-info">
           <img

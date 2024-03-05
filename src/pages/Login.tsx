@@ -23,8 +23,8 @@ function Login() {
   );
 
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="mb-12 mt-10 text-4xl font-bold">Login and enter</h2>
+    <div className="my-16 flex flex-col items-center">
+      <h2 className="mb-10 text-center text-4xl font-bold">Login and enter</h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>

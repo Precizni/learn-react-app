@@ -12,7 +12,7 @@ type ItemProps = {
 function Item({ item, onDeleteItem, onToggleItem }: ItemProps) {
   console.log(item);
   return (
-    <li className="p-3">
+    <li className="p-5">
       <input
         className="mr-2"
         type="checkbox"

@@ -11,9 +11,9 @@ function Stats({ items }: StatsProps) {
   console.log(items);
   if (!items.length)
     return (
-      <p className="mb-16 w-80 text-center">
-        <em>Start adding some items to your packing list</em>
-      </p>
+      <div className="mb-2 w-80 text-center text-xl">
+        <h2>Start adding some items to your packing list</h2>
+      </div>
     );
 
   const numItems = items.length;
@@ -21,12 +21,12 @@ function Stats({ items }: StatsProps) {
   const percentage = Math.round((numPacked / numItems) * 100);
 
   return (
-    <footer className="mb-16 w-80 text-center">
-      <em>
+    <footer className="mb-2 w-80 text-center text-xl">
+      <h2>
         {percentage === 100
           ? 'You got everything! Ready to go!'
           : `You have ${numItems} items on your list, and you already packed ${numPacked} (${percentage}%)`}
-      </em>
+      </h2>
     </footer>
   );
 }

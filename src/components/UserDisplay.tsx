@@ -5,10 +5,6 @@ function UserDisplay() {
   const { FAKE_USER, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  // function handleClick() {
-  //   logout();
-  //   navigate('/');
-  // }
   function handleClick() {
     const text = 'Do you want to logout?';
     if (confirm(text) == true) {
@@ -25,8 +21,6 @@ function UserDisplay() {
         alt={FAKE_USER.name}
         className="size-16 cursor-pointer rounded-full hover:opacity-50"
       />
-      {/* <span>{FAKE_USER.name}</span> */}
-      {/* <button onClick={handleClick}>Logout</button> */}
     </div>
   ) : null;
 }

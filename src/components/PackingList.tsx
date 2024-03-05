@@ -45,16 +45,18 @@ function PackingList({
 
   return (
     <div className="mt-10">
-      <ul className="flex h-60 w-80 flex-wrap overflow-scroll rounded-lg bg-slate-100 drop-shadow-md">
-        {sortedItems.map((item) => (
-          <Item
-            item={item}
-            onDeleteItem={onDeleteItem}
-            onToggleItem={onToggleItem}
-            key={item.id}
-          />
-        ))}
-      </ul>
+      <div className="flex justify-center">
+        <ul className="mx-20 flex max-h-48 flex-wrap overflow-scroll overflow-y-auto rounded-lg bg-neutral-100">
+          {sortedItems.map((item) => (
+            <Item
+              item={item}
+              onDeleteItem={onDeleteItem}
+              onToggleItem={onToggleItem}
+              key={item.id}
+            />
+          ))}
+        </ul>
+      </div>
 
       <div className="my-10 flex flex-col items-center">
         <select

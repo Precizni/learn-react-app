@@ -40,49 +40,53 @@ function CharacterQuotes() {
   }
 
   return (
-    <>
-      <h2 className="mb-7 mt-10 text-center text-4xl font-bold">
-        Character quotes
-      </h2>
+    <div className="my-16 xl:w-2/6 xl:self-center">
+      <h2 className="mb-10 text-center text-4xl font-bold">Character quotes</h2>
       <div className="mb-10 flex flex-wrap justify-evenly">
         <div
           onClick={samClick}
-          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300"
+          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300 active:bg-red-600"
         >
           Sam
         </div>
         <div
           onClick={ganClick}
-          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300"
+          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300 active:bg-red-600"
         >
           Gandalf
         </div>
         <div
           onClick={borClick}
-          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300"
+          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300 active:bg-red-600"
         >
           Boromir
         </div>
         <div
           onClick={gimClick}
-          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300"
+          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300 active:bg-red-600"
         >
           Gimli
         </div>
         <div
           onClick={galClick}
-          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300"
+          className="my-3 cursor-pointer rounded-lg p-2 outline outline-2 outline-offset-1 outline-black hover:bg-amber-300 active:bg-red-600"
         >
           Galadriel
         </div>
       </div>
-      <SelectedQuote
-        quote={quote}
-        query={query}
-        isLoading={isLoading}
-        error={error}
-      />
-    </>
+      {!query ? (
+        <div className="mt-16 text-center text-xl font-medium">
+          Select character above ⬆
+        </div>
+      ) : (
+        <SelectedQuote
+          quote={quote}
+          query={query}
+          isLoading={isLoading}
+          error={error}
+        />
+      )}
+    </div>
   );
 }
 

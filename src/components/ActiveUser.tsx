@@ -12,9 +12,9 @@ function ActiveUser() {
   }
 
   return (
-    <div className="flex flex-col items-center space-y-6">
-      <div className="mb-7 mt-10 text-4xl font-bold">
-        Welcome {FAKE_USER.name}.{' '}
+    <div className="my-16 flex flex-col items-center space-y-6">
+      <div className="mb-10 text-center text-4xl font-bold">
+        Welcome {FAKE_USER.name}!{' '}
       </div>
       <NavLink
         to="../web-shop"

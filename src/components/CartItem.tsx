@@ -18,7 +18,7 @@ function CartItem({ id, quantity }: CartItemProps) {
         alt={item.name}
         className="mb-1 size-20 rounded-lg border-4 border-red-700 object-cover"
       />
-      <div>
+      <div className="flex h-32 w-20 flex-col justify-between">
         <div className="text-sm">{item.name}</div>
         <div className="text-sm">
           {`${item.price} €`} {quantity > 1 && <span> x{quantity}</span>}

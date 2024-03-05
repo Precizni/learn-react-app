@@ -29,8 +29,7 @@ function Form({ onAddItems }: FormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3 className="mb-2 text-xl">What do you need for the trip?</h3>
+    <form onSubmit={handleSubmit} className="mt-5">
       <select
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}

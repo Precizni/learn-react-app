@@ -11,8 +11,8 @@ function NavBar() {
   const { openCart, cartQuantity } = useCharacter();
 
   return (
-    <div className="mt-4 px-4">
-      <div className="flex justify-between">
+    <div className=" bg-neutral-50 p-2 px-4 text-lg font-semibold drop-shadow-md xl:px-20">
+      <div className="flex justify-between border-b-2 border-neutral-200">
         <NavLink to="/" className="rounded-lg hover:bg-amber-300">
           <img
             src={HomeIcon}
@@ -30,7 +30,7 @@ function NavBar() {
         </NavLink>
       </div>
 
-      <div className="flex justify-between">
+      <div className="my-1 flex justify-between xl:px-96">
         <NavLink to="/character-info" className="rounded-lg hover:bg-amber-300">
           <div className="m-2 inline-block">Search</div>
         </NavLink>
@@ -48,7 +48,7 @@ function NavBar() {
           <div className="m-2 inline-block">Shop</div>
         </NavLink>
       </div>
-      <div className="mb-7 flex justify-end">
+      <div className="mb-2 flex justify-end">
         {isAuthenticated && cartQuantity > 0 && (
           <NavLink
             to="/web-shop"

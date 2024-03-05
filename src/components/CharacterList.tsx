@@ -38,7 +38,7 @@ function CharacterList({ onSetOpen }: CharacterListProps) {
         <button
           type="button"
           onClick={handleClick}
-          className="m-5 rounded-full border-2 border-stone-500 p-1 hover:opacity-50"
+          className="mx-2 rounded-full border-2 border-stone-500 px-2 hover:opacity-50"
         >
           <NavLink to="/character-info">Close</NavLink>
         </button>

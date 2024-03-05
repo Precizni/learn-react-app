@@ -41,8 +41,9 @@ function TravelList() {
   }
 
   return (
-    <div className="mt-10 flex flex-col items-center">
-      <h1 className="mb-3 text-4xl font-bold"> Middle-Earth 🏕️ 🌋</h1>
+    <div className="my-16 flex flex-col items-center">
+      <h1 className="mb-10 text-4xl font-bold"> Middle-Earth 🏕️ 🌋</h1>
+      <Stats items={items} />
       <Form onAddItems={handleAddItems} />
       <PackingList
         items={items}
@@ -50,7 +51,6 @@ function TravelList() {
         onToggleItem={handleToggleItem}
         onClearList={handleClearList}
       />
-      <Stats items={items} />
     </div>
   );
 }
