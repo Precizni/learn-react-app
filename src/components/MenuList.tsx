@@ -24,20 +24,12 @@ function MenuList() {
 
       <div>
         {query === 'book' &&
-          (isLoading ? (
-            <Loading />
-          ) : (
-            <BooksList data={data} query={query} onSetQuery={setQuery} />
-          ))}
+          (isLoading ? <Loading /> : <BooksList data={data} query={query} />)}
         {error && <ErrorMessage message={error} />}
       </div>
       <div>
         {query === 'movie' &&
-          (isLoading ? (
-            <Loading />
-          ) : (
-            <MoviesList data={data} query={query} onSetQuery={setQuery} />
-          ))}
+          (isLoading ? <Loading /> : <MoviesList data={data} query={query} />)}
         {error && <ErrorMessage message={error} />}
       </div>
       <div>{open && <CharacterList onSetOpen={setOpen} />}</div>
