@@ -14,7 +14,6 @@ type FetchedData = {
 type MoviesListProps = {
   data: FetchedData[] | null;
   query: string;
-  onSetQuery: React.Dispatch<React.SetStateAction<string>>;
 };
 
 type MovieProps = {
@@ -30,10 +29,7 @@ type MovieProps = {
   };
 };
 
-function MoviesList({ data, query, onSetQuery }: MoviesListProps) {
-  function handleClick() {
-    onSetQuery('');
-  }
+function MoviesList({ data, query }: MoviesListProps) {
   return (
     <div className="my-10 text-center">
       <div className="pb-3 text-xl">List of movies to select</div>

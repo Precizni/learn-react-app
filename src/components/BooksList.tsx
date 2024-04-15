@@ -15,14 +15,9 @@ type BooksListProps = {
   // data: { name: string; _id: string }[];
   data: FetchedData[] | null;
   query: string;
-  onSetQuery: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function BooksList({ data, query, onSetQuery }: BooksListProps) {
-  function handleClick() {
-    onSetQuery('');
-  }
-
+function BooksList({ data, query }: BooksListProps) {
   return (
     <div className="my-10 text-center">
       <div className="pb-3 text-xl">List of books to select</div>
