@@ -16,7 +16,7 @@ function CharacterQuotes() {
     return Math.round(Math.random() * Number(data?.length));
   }
 
-  const quote = data?.filter((x, y) => y === number).map((a) => a.dialog);
+  const quote = data?.filter((_, y) => y === number).map((a) => a.dialog);
 
   function samClick() {
     setQuery(sam);
