@@ -12,7 +12,6 @@ type FetchedData = {
 };
 
 type BooksListProps = {
-  // data: { name: string; _id: string }[];
   data: FetchedData[] | null;
   query: string;
 };
@@ -31,13 +30,6 @@ function BooksList({ data, query }: BooksListProps) {
             </li>
           ))}
       </div>
-      {/* <button
-        type="button"
-        onClick={handleClick}
-        className="m-5 rounded-full border-2 border-black p-1 hover:opacity-50"
-      >
-        Close
-      </button> */}
     </div>
   );
 }

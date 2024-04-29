@@ -33,9 +33,6 @@ function MoviesList({ data, query }: MoviesListProps) {
   return (
     <div className="my-10 text-center">
       <div className="pb-3 text-xl">List of movies to select</div>
-      {/* <button type="button" onClick={handleClick}>
-        X
-      </button> */}
       <div className="text-left underline underline-offset-1">
         {query &&
           data?.map((movie) => <ListItem movie={movie} key={movie._id} />)}
